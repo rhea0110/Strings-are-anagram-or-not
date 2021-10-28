@@ -1,0 +1,41 @@
+// Two strings A and B are called anagrams if they contain all the same characters in the same frequencies. Given two strings, find whether both are anagram of each other or not.
+
+Complete the function isAnagram() that will take two strings as parameters and return 1 if they are anagram and return 0 otherwise.
+
+import java.util.Scanner;
+class Main
+{
+static int isAnagram(String a, String b){
+    if (a.length() != b.length())
+            return 0;
+        int[] count = new int[256];
+        int i;
+        for (i = 0; i < a.length(); i++) {
+            count[a.charAt(i)]++;
+            count[b.charAt(i)]--;
+        }
+        for (i = 0; i < 256; i++)
+            if (count[i] != 0)
+                return 0;
+        return 1;
+    }
+    
+    public static void main(String[] args)
+{
+  Scanner scan = new Scanner(System.in);
+  int t;
+  t=Integer.parseInt(scan.nextLine().trim());
+  while(t>0)
+  {
+    t--;
+    String a = scan.nextLine().trim();
+    String b = scan.nextLine().trim();
+    int ret = isAnagram(a, b);
+    if(ret==1)
+      System.out.println("Yes");
+    else
+      System.out.println("No");
+  }
+  scan.close();
+}
+}
